@@ -39,7 +39,43 @@ class ViewController: UIViewController {
     
     
     @IBAction func signUpActions(_ sender: Any) {
+        if emailTextField.text == "" || passwordTextField.text == ""{
+            print("Error empty textField")
+            displayAlert(title: "Error", message: "Please enter Email & Password")
+            
+        } else {
+            if signUpMode {
+                //sign up
+                Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                    if error != nil {
+                        self.displayAlert(title: "Error", message: error!.localizedDescription)
+                    } else {
+                        self.displayAlert(title: "Sign Up", message: "Registration was a success")
+                        print("Sign up Success")
+                        
+                    }
+                }
+            } else {
+                //sign in
+                Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                    if error != nil {
+                        self.displayAlert(title: "Error", message: error!.localizedDescription)
+                    } else {
+                        print("Sign up Success")
+                        
+                    }
+                }
+                
+            }
+        }
         
+    }
+    
+    func displayAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
         
     }
     
@@ -54,6 +90,7 @@ class ViewController: UIViewController {
             switchButton.isHidden = true
             //this is important, so it know it change
             signUpMode = false
+            
             
             
             
