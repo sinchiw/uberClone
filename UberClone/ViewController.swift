@@ -51,7 +51,10 @@ class ViewController: UIViewController {
                         self.displayAlert(title: "Error", message: error!.localizedDescription)
                     } else {
                         self.displayAlert(title: "Sign Up", message: "Registration was a success")
+                        
+                        
                         print("Sign up Success")
+//                        self.performSegue(withIdentifier: "riderSegue", sender: nil)
                         
                     }
                 }
@@ -61,7 +64,8 @@ class ViewController: UIViewController {
                     if error != nil {
                         self.displayAlert(title: "Error", message: error!.localizedDescription)
                     } else {
-                        print("Sign up Success")
+                        print("Sign in Success")
+                       self.performSegue(withIdentifier: "riderSegue", sender: nil)
                         
                     }
                 }
@@ -74,8 +78,16 @@ class ViewController: UIViewController {
     func displayAlert(title: String, message: String) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
+            
+//        } else if( title == "Sign up" & message == "Registration was a success"){
+//            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in self.performSegue(withIdentifier: "riderSegue", sender: nil)}))
+//             self.present(alertController, animated: true, completion: nil)
+        
+        
+       
         
     }
     

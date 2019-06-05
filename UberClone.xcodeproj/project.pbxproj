@@ -18,6 +18,7 @@
 		CE1A518922A1989C0080A19A /* UberCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A518822A1989C0080A19A /* UberCloneTests.swift */; };
 		CE1A519422A1989D0080A19A /* UberCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A519322A1989D0080A19A /* UberCloneUITests.swift */; };
 		CE1A51A222A199220080A19A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1A51A122A199220080A19A /* GoogleService-Info.plist */; };
+		CE2DCCD822A6E6E8006CFF76 /* RiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DCCD722A6E6E8006CFF76 /* RiderViewController.swift */; };
 		E09815F2C4F19F03DFE9A10F /* Pods_UberCloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07868439BE7124720B46A913 /* Pods_UberCloneTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		CE1A519322A1989D0080A19A /* UberCloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberCloneUITests.swift; sourceTree = "<group>"; };
 		CE1A519522A1989D0080A19A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1A51A122A199220080A19A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE2DCCD722A6E6E8006CFF76 /* RiderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiderViewController.swift; sourceTree = "<group>"; };
 		EF15D6965661C54F2C817ABD /* Pods-UberClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UberClone/Pods-UberClone.debug.xcconfig"; sourceTree = "<group>"; };
 		F1EDDCE83AE28AB0442A7DB6 /* Pods-UberCloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberCloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UberCloneTests/Pods-UberCloneTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +146,7 @@
 				CE1A517022A1989A0080A19A /* AppDelegate.swift */,
 				CE1A517222A1989A0080A19A /* ViewController.swift */,
 				CE1A517422A1989A0080A19A /* Main.storyboard */,
+				CE2DCCD722A6E6E8006CFF76 /* RiderViewController.swift */,
 				CE1A517A22A1989C0080A19A /* Assets.xcassets */,
 				CE1A517C22A1989C0080A19A /* LaunchScreen.storyboard */,
 				CE1A517F22A1989C0080A19A /* Info.plist */,
@@ -348,12 +351,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-UberClone/Pods-UberClone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1A517322A1989A0080A19A /* ViewController.swift in Sources */,
+				CE2DCCD822A6E6E8006CFF76 /* RiderViewController.swift in Sources */,
 				CE1A517922A1989A0080A19A /* UberClone.xcdatamodeld in Sources */,
 				CE1A517122A1989A0080A19A /* AppDelegate.swift in Sources */,
 			);
