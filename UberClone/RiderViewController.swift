@@ -34,6 +34,21 @@ class RiderViewController: UIViewController, CLLocationManagerDelegate{
         checkIfUberCalled()
     }
     
+    
+    @IBAction func getUserLocation(_ sender: Any) {
+        if CLLocationManager.locationServicesEnabled() {
+            
+            locationManger.delegate = self
+            locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManger.startUpdatingLocation()
+            
+            
+           
+            
+        }
+        
+    }
+    
     func checkIfUberCalled(){
         //this func help see if uber has been called when your logged out.. it first check the info in the database, if there is than the title of the button will chnage and the snapref,remove.value wont be called since we did mot implemtied 
         if let email = Auth.auth().currentUser?.email{

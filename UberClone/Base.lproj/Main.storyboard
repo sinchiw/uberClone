@@ -27,7 +27,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rider@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-qf-gU2">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="driver@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-qf-gU2">
                                 <rect key="frame" x="56" y="136" width="302" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="lai-rj-9Kn"/>
@@ -120,6 +120,7 @@
                         <outlet property="singUpButton" destination="vBh-0y-Svf" id="aqx-Vw-yE4"/>
                         <outlet property="switchButton" destination="7nW-Zi-Izg" id="pmi-DK-QTT"/>
                         <segue destination="x2j-QI-OMU" kind="presentation" identifier="riderSegue" id="l5M-cC-RSU"/>
+                        <segue destination="XrG-tA-ooB" kind="presentation" identifier="driverSegue" id="Ok0-iJ-8K1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -148,11 +149,20 @@
                                     <action selector="callInAction:" destination="jbu-DS-V3W" eventType="touchUpInside" id="ugP-7H-Juk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSe-T5-KiD">
+                                <rect key="frame" x="56" y="506" width="32" height="32"/>
+                                <state key="normal" image="location"/>
+                                <connections>
+                                    <action selector="getUserLocation:" destination="jbu-DS-V3W" eventType="touchUpInside" id="Yfd-ex-xQ1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sSY-V4-fM0" firstAttribute="leading" secondItem="7On-P6-ju5" secondAttribute="leading" id="8Xy-TU-8dZ"/>
+                            <constraint firstItem="eVX-Gu-7OR" firstAttribute="leading" secondItem="KSe-T5-KiD" secondAttribute="trailing" constant="70" id="Q0j-ta-C85"/>
                             <constraint firstItem="eVX-Gu-7OR" firstAttribute="top" secondItem="sSY-V4-fM0" secondAttribute="bottom" constant="40" id="VVV-5U-16b"/>
+                            <constraint firstItem="KSe-T5-KiD" firstAttribute="top" secondItem="sSY-V4-fM0" secondAttribute="bottom" constant="40" id="az6-TA-d9R"/>
                             <constraint firstItem="sSY-V4-fM0" firstAttribute="top" secondItem="7On-P6-ju5" secondAttribute="top" id="hYo-Rc-ev1"/>
                             <constraint firstItem="eVX-Gu-7OR" firstAttribute="centerX" secondItem="EyM-l6-U3j" secondAttribute="centerX" constant="1.5" id="iaq-5w-h4w"/>
                             <constraint firstItem="sSY-V4-fM0" firstAttribute="trailing" secondItem="7On-P6-ju5" secondAttribute="trailing" id="tyk-o1-cQW"/>
@@ -193,5 +203,64 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="105.16304347826087"/>
         </scene>
+        <!--Driver View Controller-->
+        <scene sceneID="Lyg-HG-HWi">
+            <objects>
+                <tableViewController id="rsx-NG-eXl" customClass="DriverViewController" customModule="UberClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7EW-co-F1x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resuseIdentifier" id="ieR-1d-0gD">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ieR-1d-0gD" id="XO7-Bm-51M">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rsx-NG-eXl" id="VTS-8Z-J13"/>
+                            <outlet property="delegate" destination="rsx-NG-eXl" id="KWE-r2-Ia1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="hG9-F7-6mS">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="8Jn-lU-wgh">
+                            <connections>
+                                <action selector="logOutAction:" destination="rsx-NG-eXl" id="gOe-AB-uSh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="logOutButton" destination="8Jn-lU-wgh" id="Tiu-cU-tsP"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TdU-Xh-HAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2036.2318840579712" y="878.804347826087"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SFf-tB-DFH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XrG-tA-ooB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ope-8F-ajC">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rsx-NG-eXl" kind="relationship" relationship="rootViewController" id="Cwq-hH-2aD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pib-uD-qcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1128.985507246377" y="878.804347826087"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="location" width="32" height="32"/>
+    </resources>
 </document>

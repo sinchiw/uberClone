@@ -50,22 +50,51 @@ class ViewController: UIViewController {
                     if error != nil {
                         self.displayAlert(title: "Error", message: error!.localizedDescription)
                     } else {
-                        self.displayAlert(title: "Sign Up", message: "Registration was a success")
-                        
-                        
-                        print("Sign up Success")
+                        self.displayAlert(title: "Sign Up", message: "Registration was a success, switch to log in to sign in (:")
+                        //signing up for different type of user, one for rider, one for driver
+                        if self.switchButton.isOn{
+                            //DRIVER
+                          let req =  Auth.auth().currentUser?.createProfileChangeRequest()
+                            req?.displayName = "Driver"
+                            req?.commitChanges(completion: nil)
+                            print("Sign up success for Driver")
+                            //fiz this part of coding
+                            self.performSegue(withIdentifier: "driverSegue", sender: nil)
+
+                        } else {
+                            //RIDER
+                            let req =  Auth.auth().currentUser?.createProfileChangeRequest()
+                            req?.displayName = "Rider"
+                            req?.commitChanges(completion: nil)
+                            print("Sign up succes for Driver")
+                             self.performSegue(withIdentifier: "riderSegue", sender: nil)
+                        }
+//                        print("Sign up Success")
 //                        self.performSegue(withIdentifier: "riderSegue", sender: nil)
                         
                     }
                 }
             } else {
                 //sign in
+                //if and else statement to sign in depending on a type of user(Driver or Rider) on line 84
                 Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                     if error != nil {
                         self.displayAlert(title: "Error", message: error!.localizedDescription)
+                   
                     } else {
-                        print("Sign in Success")
-                       self.performSegue(withIdentifier: "riderSegue", sender: nil)
+                        //Driver
+                        
+                        if user?.user.displayName == "Driver"{
+                            self.performSegue(withIdentifier: "driverSegue", sender: nil)
+                            print ("Sign in Sucess for Driver")
+                            
+                        } else {
+                            //Rider
+                            self.performSegue(withIdentifier: "riderSegue", sender:nil)
+                            print("Sign in Success for Rider")
+                        }
+                        
+                        
                         
                     }
                 }
