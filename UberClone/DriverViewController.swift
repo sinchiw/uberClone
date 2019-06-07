@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import MapKit
-
+//33:48 wher you left off\
 
 class DriverViewController: UITableViewController,CLLocationManagerDelegate {
 
@@ -53,6 +53,7 @@ class DriverViewController: UITableViewController,CLLocationManagerDelegate {
             // refresh everytime a new data is added
             self.tableView.reloadData()
         }
+        //where the new point is being reolace and new locations
         Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { (timer) in
             self.tableView.reloadData()
         }
@@ -111,6 +112,38 @@ class DriverViewController: UITableViewController,CLLocationManagerDelegate {
         
     }
     
+    
+   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //we are gonna proivde something in the sender
+        performSegue(withIdentifier: "DriverMap", sender: nil)
+    }
+    
+    // this functions allow me to
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if let acceptVC = segue.destination as? AcceptRequestViewController{
+            if let snapshot = sender as? DataSnapshot {
+                if let rideRequestDictionary = snapshot.value as? [String:AnyObject]{
+                    //unwrap the email in the dictionary
+                    if let email = rideRequestDictionary["email"] as? String {
+                        //once you can get the email info, now we need to get the lat and long info from the rider information
+                        if let lat = rideRequestDictionary["lat"] as? Double {
+                            if let long = rideRequestDictionary["long"] as? Double {
+                                acceptVC.requestEmail = email
+                                
+                                let location = 
+                                acceptVC.requestLocations =
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+        }
+    }
     /*
     // MARK: - Navigation
 

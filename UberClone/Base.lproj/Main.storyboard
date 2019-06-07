@@ -235,11 +235,51 @@
                     </navigationItem>
                     <connections>
                         <outlet property="logOutButton" destination="8Jn-lU-wgh" id="Tiu-cU-tsP"/>
+                        <segue destination="EyB-Wx-K3i" kind="show" identifier="DriverMap" id="J1g-q4-Jxl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdU-Xh-HAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2036.2318840579712" y="878.804347826087"/>
+        </scene>
+        <!--Accept Request View Controller-->
+        <scene sceneID="hRN-7M-bCP">
+            <objects>
+                <viewController id="EyB-Wx-K3i" customClass="AcceptRequestViewController" customModule="UberClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xR2-QV-1cz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="F32-Mr-aqs">
+                                <rect key="frame" x="0.0" y="64" width="414" height="494"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="F32-Mr-aqs" secondAttribute="height" multiplier="207:247" id="xXb-kh-bnc"/>
+                                </constraints>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmP-HI-zOw">
+                                <rect key="frame" x="165.66666666666666" y="591" width="83" height="30"/>
+                                <state key="normal" title="Accept Ride"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F4k-mC-QP9" firstAttribute="bottom" secondItem="F32-Mr-aqs" secondAttribute="bottom" constant="178" id="9mY-zc-zEj"/>
+                            <constraint firstItem="F32-Mr-aqs" firstAttribute="leading" secondItem="F4k-mC-QP9" secondAttribute="leading" id="CCA-9l-gYS"/>
+                            <constraint firstItem="F32-Mr-aqs" firstAttribute="top" secondItem="F4k-mC-QP9" secondAttribute="top" id="Iwg-Iw-Lye"/>
+                            <constraint firstItem="F32-Mr-aqs" firstAttribute="trailing" secondItem="F4k-mC-QP9" secondAttribute="trailing" id="ZJS-0k-rXn"/>
+                            <constraint firstItem="CmP-HI-zOw" firstAttribute="top" secondItem="F32-Mr-aqs" secondAttribute="bottom" constant="33" id="c0b-iI-Onm"/>
+                            <constraint firstItem="CmP-HI-zOw" firstAttribute="centerX" secondItem="xR2-QV-1cz" secondAttribute="centerX" id="uRm-Wh-BrL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="F4k-mC-QP9"/>
+                    </view>
+                    <connections>
+                        <outlet property="acceptButton" destination="CmP-HI-zOw" id="Neh-cq-rpD"/>
+                        <outlet property="mapView" destination="F32-Mr-aqs" id="MUD-ou-GVV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRX-no-OWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2898.5507246376815" y="865.76086956521749"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SFf-tB-DFH">

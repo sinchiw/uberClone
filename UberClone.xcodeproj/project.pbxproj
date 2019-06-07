@@ -21,6 +21,7 @@
 		CE2DCCD822A6E6E8006CFF76 /* RiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DCCD722A6E6E8006CFF76 /* RiderViewController.swift */; };
 		CE3A090E22A989BD00E8FBE4 /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A090D22A989BD00E8FBE4 /* DriverViewController.swift */; };
 		CE3A091022A99D6600E8FBE4 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3A090F22A99D6600E8FBE4 /* location.png */; };
+		CE3A091222AAB39200E8FBE4 /* AcceptRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A091122AAB39200E8FBE4 /* AcceptRequestViewController.swift */; };
 		E09815F2C4F19F03DFE9A10F /* Pods_UberCloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07868439BE7124720B46A913 /* Pods_UberCloneTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		CE2DCCD722A6E6E8006CFF76 /* RiderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiderViewController.swift; sourceTree = "<group>"; };
 		CE3A090D22A989BD00E8FBE4 /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
 		CE3A090F22A99D6600E8FBE4 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		CE3A091122AAB39200E8FBE4 /* AcceptRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRequestViewController.swift; sourceTree = "<group>"; };
 		EF15D6965661C54F2C817ABD /* Pods-UberClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UberClone/Pods-UberClone.debug.xcconfig"; sourceTree = "<group>"; };
 		F1EDDCE83AE28AB0442A7DB6 /* Pods-UberCloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberCloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UberCloneTests/Pods-UberCloneTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 				CE1A517222A1989A0080A19A /* ViewController.swift */,
 				CE2DCCD722A6E6E8006CFF76 /* RiderViewController.swift */,
 				CE3A090D22A989BD00E8FBE4 /* DriverViewController.swift */,
+				CE3A091122AAB39200E8FBE4 /* AcceptRequestViewController.swift */,
 				CE1A517422A1989A0080A19A /* Main.storyboard */,
 				CE3A090F22A99D6600E8FBE4 /* location.png */,
 				CE1A517A22A1989C0080A19A /* Assets.xcassets */,
@@ -402,6 +405,7 @@
 				CE3A090E22A989BD00E8FBE4 /* DriverViewController.swift in Sources */,
 				CE2DCCD822A6E6E8006CFF76 /* RiderViewController.swift in Sources */,
 				CE1A517922A1989A0080A19A /* UberClone.xcdatamodeld in Sources */,
+				CE3A091222AAB39200E8FBE4 /* AcceptRequestViewController.swift in Sources */,
 				CE1A517122A1989A0080A19A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
