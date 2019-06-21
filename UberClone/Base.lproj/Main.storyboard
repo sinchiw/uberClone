@@ -259,6 +259,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmP-HI-zOw">
                                 <rect key="frame" x="165.66666666666666" y="591" width="83" height="30"/>
                                 <state key="normal" title="Accept Ride"/>
+                                <connections>
+                                    <action selector="rideRequestAction:" destination="EyB-Wx-K3i" eventType="touchUpInside" id="ayP-RN-KO7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

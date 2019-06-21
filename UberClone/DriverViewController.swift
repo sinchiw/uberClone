@@ -98,6 +98,7 @@ class DriverViewController: UITableViewController,CLLocationManagerDelegate {
                     //round the distance by 100
                     let roundedDistance = round(distance * 100) / 100
                     cell.textLabel?.text = "\(email) is \(roundedDistance)km away"
+                    
                 }
             }
            
@@ -115,7 +116,8 @@ class DriverViewController: UITableViewController,CLLocationManagerDelegate {
     
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //we are gonna proivde something in the sender
-        performSegue(withIdentifier: "DriverMap", sender: nil)
+        let snapshot = rideRequest[indexPath.row]
+        performSegue(withIdentifier: "DriverMap", sender: snapshot)
     }
     
     // this functions allow me to
@@ -133,8 +135,8 @@ class DriverViewController: UITableViewController,CLLocationManagerDelegate {
                             if let long = rideRequestDictionary["long"] as? Double {
                                 acceptVC.requestEmail = email
                                 
-                                let location = 
-                                acceptVC.requestLocations =
+                                let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                                acceptVC.requestLocations = location
                             }
                         }
                     }
