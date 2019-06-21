@@ -29,10 +29,10 @@ class DriverViewController: UITableViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        locationManger.delegate = self
-        locationManger.desiredAccuracy = kCLLocationAccuracyBest
-        locationManger.requestWhenInUseAuthorization()
-        locationManger.startUpdatingLocation()
+//        locationManger.delegate = self
+//        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManger.requestWhenInUseAuthorization()
+//        locationManger.startUpdatingLocation()
         tabledata()
         
         
@@ -46,12 +46,26 @@ class DriverViewController: UITableViewController,CLLocationManagerDelegate {
     }
     
     func tabledata(){
+        locationManger.delegate = self
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.startUpdatingLocation()
         //to grab data and put inro am array
         Database.database().reference().child("RideRequests").observe(.childAdded) { (snapshot) in
+            //simple checked if the driver accepted the rider request
+            //fix this part on checking 
+            if let rideRequestDictionary = snapshot.value as? [String:AnyObject]{
+                if let driverLat = rideRequestDictionary["driverlat"] as? Double {
+                } else {
+                    self.rideRequest.append(snapshot)
+                    self.tableView.reloadData()
+                }
+            }
+            //you dont need this anymore
+//            self.rideRequest.append(snapshot)
+//            // refresh everytime a new data is added
+//            self.tableView.reloadData()
             
-            self.rideRequest.append(snapshot)
-            // refresh everytime a new data is added
-            self.tableView.reloadData()
         }
         //where the new point is being reolace and new locations
         Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { (timer) in

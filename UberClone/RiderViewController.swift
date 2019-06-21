@@ -12,15 +12,19 @@ import FirebaseDatabase
 import FirebaseAuth
 import Firebase
 
+//16:43
+
 class RiderViewController: UIViewController, CLLocationManagerDelegate{
 
     @IBOutlet weak var callInButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
     var userLocation = CLLocationCoordinate2D()
+    var driverLocation = CLLocationCoordinate2D()
     
     
     var locationManger = CLLocationManager()
+    var driverOnTheWay = false
     var uberHasBeenCalled = false
     
     
@@ -32,6 +36,8 @@ class RiderViewController: UIViewController, CLLocationManagerDelegate{
         locationManger.startUpdatingLocation()
         // Do any additional setup after loading the view.
         checkIfUberCalled()
+//        displayDriverAndRider()
+        
     }
     
     
@@ -41,7 +47,7 @@ class RiderViewController: UIViewController, CLLocationManagerDelegate{
             locationManger.delegate = self
             locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManger.startUpdatingLocation()
-            
+          print("getting your location")
             
            
             
@@ -59,11 +65,54 @@ class RiderViewController: UIViewController, CLLocationManagerDelegate{
                 self.callInButton.setTitle("Cancel Uber", for: .normal)
                 Database.database().reference().child("RideRequests").removeAllObservers()
                 
+                if let rideRequestDictionary = snapchat.value as? [String:AnyObject]{
+                    if let driverLat = rideRequestDictionary["driverlat"] as? Double {
+                        if let driverLong = rideRequestDictionary["driverlon"] as? Double {
+                           self.driverLocation = CLLocationCoordinate2D(latitude: driverLat, longitude: driverLong)
+                            self.driverOnTheWay = true
+                            //fix this
+                            self.displayDriverAndRider()
+                        }
+                    }
+                }
                 
             }
             
         }
     }
+        
+        
+        func displayDriverAndRider(){
+            //show the distance between the driver and the rider on the map
+            let driverCLLocation = CLLocation(latitude: driverLocation.latitude, longitude: driverLocation.longitude)
+            let riderCLLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+//            let riderCLLocation = CLLocation(latitude: lat, longitude: long)
+            let distance = driverCLLocation.distance(from: riderCLLocation) / 1000
+            //round the distance by 100
+            let roundedDistance = round(distance * 100) / 100
+            callInButton.setTitle("Your driver is \(roundedDistance) 5Km away!", for: .normal)
+            mapView.removeAnnotation(mapView?.annotations as! MKAnnotation)
+            //to calculate the delta
+            let latDelta = abs(driverLocation.latitude - userLocation.latitude) * 2 + 0.005
+            let longDelta = abs(driverLocation.longitude - userLocation.longitude) * 2 + 0.005
+            
+
+            let region = MKCoordinateRegion(center: userLocation, span: MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta))
+            mapView.setRegion(region, animated: true)
+            
+            let riderAnnotation = MKPointAnnotation()
+            riderAnnotation.coordinate = userLocation
+            riderAnnotation.title = "Your Location"
+            mapView.addAnnotation(riderAnnotation)
+            
+            let driverAnnotation = MKPointAnnotation()
+            driverAnnotation.coordinate = userLocation
+            driverAnnotation.title = "Driver Location"
+            mapView.addAnnotation(driverAnnotation)
+            
+
+            
+        }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let cordinate = manager.location?.coordinate {
@@ -114,6 +163,7 @@ class RiderViewController: UIViewController, CLLocationManagerDelegate{
    
      @IBAction func callInAction(_ sender: Any) {
         // make sure that you set up the rule so it cna read and write
+        if !driverOnTheWay {
         
         if let email = Auth.auth().currentUser?.email {
             
@@ -143,6 +193,7 @@ class RiderViewController: UIViewController, CLLocationManagerDelegate{
             uberHasBeenCalled = true
             //change the button once the button has been tapped, it change the button title
             callInButton.setTitle("Cancel Uber", for: .normal)
+            }
             }
         }
      }
